@@ -1,20 +1,23 @@
 import subprocess
 import sys
-
 import streamlit as st
+
 def install_detectron2():
-    """Function to install Detectron2 at runtime"""
+    """Installs Detectron2 without breaking Torch"""
     try:
         import detectron2
     except ImportError:
         st.warning("Installing Detectron2... Please wait ⏳")
-        subprocess.run(
-            [sys.executable, "-m", "pip", "install", "git+https://github.com/facebookresearch/detectron2.git"],
-            check=True
-        )
-        st.success("Detectron2 installed successfully! ✅")
+        
+        # Ensure torch remains installed
+        subprocess.run([sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio"], check=True)
+        
+        # Install Detectron2
+        subprocess.run([sys.executable, "-m", "pip", "install", "git+https://github.com/facebookresearch/detectron2.git"], check=True)
+        
+        st.success("Detectron2 installed successfully! ✅ Please restart the app if you face issues.")
 
-# Call the function before using Detectron2
+# Call installation before using Detectron2
 install_detectron2()
 
 
