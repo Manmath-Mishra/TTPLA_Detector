@@ -6,4 +6,4 @@ matplotlib
 pillow
 Requests
 streamlit
-git+https://github.com/facebookresearch/detectron2.git#egg=detectron2
+git+https://github.com/facebookresearch/detectron2.git
