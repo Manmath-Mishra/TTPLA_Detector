@@ -6,5 +6,4 @@ matplotlib
 pillow
 Requests
 streamlit
-# Install detectron2 separately after torch is installed
--e git+https://github.com/facebookresearch/detectron2.git
+git+https://github.com/facebookresearch/detectron2.git#egg=detectron2
