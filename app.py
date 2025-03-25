@@ -1,23 +1,20 @@
 import subprocess
 import sys
 
-def install_packages():
-    """Function to install required packages at runtime"""
-    packages = [
-        "torch",
-        "torchvision",
-        "torchaudio",
-        "git+https://github.com/facebookresearch/detectron2.git"
-    ]
-    
-    # Install PyTorch from the correct index
-    subprocess.run([sys.executable, "-m", "pip", "install", "-f", "https://download.pytorch.org/whl/cpu.html"] + packages, check=True)
+def install_detectron2():
+    """Function to install Detectron2 at runtime"""
+    try:
+        import detectron2
+    except ImportError:
+        st.warning("Installing Detectron2... Please wait ⏳")
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "git+https://github.com/facebookresearch/detectron2.git"],
+            check=True
+        )
+        st.success("Detectron2 installed successfully! ✅")
 
-# Try importing Detectron2, install if missing
-try:
-    import detectron2
-except ImportError:
-    install_packages()
+# Call the function before using Detectron2
+install_detectron2()
 
 
 import streamlit as st
