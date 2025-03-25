@@ -1,6 +1,7 @@
 import subprocess
 import sys
 
+import streamlit as st
 def install_detectron2():
     """Function to install Detectron2 at runtime"""
     try:
@@ -17,7 +18,6 @@ def install_detectron2():
 install_detectron2()
 
 
-import streamlit as st
 import detectron2
 import torch
 import numpy as np
